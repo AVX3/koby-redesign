@@ -284,6 +284,22 @@ window.VEHICLES = [
     list.sort(sorters[state.sort] || sorters['price-asc']);
 
     document.getElementById('vehicle-count').textContent = list.length;
+    const mobileCount = document.getElementById('vehicle-count-mobile');
+    if (mobileCount) mobileCount.textContent = list.length;
+
+    // Aktive-Filter-Zähler für Mobile-Button
+    const activeCount =
+      (state.q ? 1 : 0) +
+      (state.brand !== 'all' ? 1 : 0) +
+      (state.fuel !== 'all' ? 1 : 0) +
+      (state.priceMax && state.priceMax < 30000 ? 1 : 0) +
+      (state.sort !== 'price-asc' ? 1 : 0);
+    const badge = document.getElementById('filter-active-count');
+    if (badge) {
+      badge.textContent = activeCount;
+      badge.classList.toggle('hidden', activeCount === 0);
+    }
+
     grid.innerHTML = list.length
       ? list.map(renderCard).join('')
       : `<div class="col-span-full rounded-2xl border border-white/10 bg-ink-800 p-10 text-center text-neutral-400">Keine Fahrzeuge passen zu Ihrer Auswahl. <button id="reset-filters" class="text-brand-500 hover:underline">Filter zurücksetzen</button></div>`;
@@ -294,6 +310,18 @@ window.VEHICLES = [
     const reset = document.getElementById('reset-filters');
     if (reset) reset.addEventListener('click', () => location.reload());
   };
+
+  // Mobile Filter-Toggle
+  const filterToggle = document.getElementById('filter-toggle');
+  const filterPanel = document.getElementById('filter-panel');
+  const filterChevron = document.getElementById('filter-chevron');
+  if (filterToggle && filterPanel) {
+    filterToggle.addEventListener('click', () => {
+      const open = filterPanel.classList.toggle('hidden') === false;
+      filterToggle.setAttribute('aria-expanded', String(open));
+      if (filterChevron) filterChevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
 
   // Filter-Bindings
   const bind = (id, key, mapper = (x) => x) => {

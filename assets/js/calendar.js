@@ -83,11 +83,9 @@
         </div>
       </div>
 
-      <div class="mb-4 flex flex-wrap items-center gap-3 text-xs text-neutral-400">
-        <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-brand-500"></span> Frei &amp; buchbar</span>
-        <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-white/30"></span> Belegt</span>
-        <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-white/10"></span> Vergangen</span>
-        <span class="ml-auto text-white font-semibold">${availableCount} freie Slots diese Woche</span>
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <span class="text-neutral-400">Klicken Sie auf einen freien Slot, um ihn anzufragen.</span>
+        <span class="text-white font-semibold">${availableCount} freie Slots diese Woche</span>
       </div>
 
       <div class="grid gap-3 sm:grid-cols-5">
@@ -101,19 +99,15 @@
           <p class="mt-0.5 font-display text-2xl ${today ? 'text-brand-500' : 'text-white'}">${fmtDay(d)}.${fmtMonth(d)}</p>
           <div class="mt-4 space-y-2">
       `;
-      SLOTS.forEach(slot => {
-        const past = isPast(d, slot);
-        const booked = !past && isSlotBooked(d, slot);
-        const free = !past && !booked;
-        if (past) {
-          html += `<div class="rounded-md border border-white/5 bg-white/[0.02] px-2.5 py-1.5 text-xs text-neutral-600 line-through">${slot}</div>`;
-        } else if (booked) {
-          html += `<div class="rounded-md border border-white/5 bg-white/5 px-2.5 py-1.5 text-xs text-neutral-500" aria-label="Slot belegt">${slot} <span class="text-[10px]">belegt</span></div>`;
-        } else {
+      const freeSlots = SLOTS.filter(s => !isPast(d, s) && !isSlotBooked(d, s));
+      if (freeSlots.length === 0) {
+        html += `<p class="text-xs text-neutral-500 italic pt-1">Keine freien Slots</p>`;
+      } else {
+        freeSlots.forEach(slot => {
           const href = `kontakt.html?termin=${encodeURIComponent(isoDate(d) + ' ' + slot)}&leistung=${encodeURIComponent(state.service)}#formular`;
-          html += `<a href="${href}" class="block rounded-md border border-brand-500/40 bg-brand-500/10 hover:bg-brand-500 hover:text-black text-brand-300 px-2.5 py-1.5 text-xs font-semibold transition">${slot} <span class="text-[10px] opacity-80">frei</span></a>`;
-        }
-      });
+          html += `<a href="${href}" class="block rounded-md border border-brand-500/40 bg-brand-500/10 hover:bg-brand-500 hover:text-black text-brand-300 px-2.5 py-1.5 text-xs font-semibold transition">${slot}</a>`;
+        });
+      }
       html += `</div></div>`;
     });
 

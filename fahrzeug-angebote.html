@@ -93,48 +93,61 @@
 
     <!-- FILTER -->
     <section class="sticky top-20 z-30 bg-ink-900/95 backdrop-blur border-b border-white/5" aria-label="Filter">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
-          <label class="lg:col-span-2 relative block">
-            <span class="sr-only">Suchen</span>
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input id="f-q" type="search" placeholder="Suchen: Marke, Modell, Farbe, Ausstattung …" class="w-full pl-9 rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" />
-          </label>
-          <label class="block">
-            <span class="sr-only">Marke</span>
-            <select id="f-brand" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
-              <option value="all">Alle Marken</option>
-              <option value="BMW">BMW</option>
-              <option value="Ford">Ford</option>
-              <option value="Mazda">Mazda</option>
-              <option value="Opel">Opel</option>
-              <option value="VW">VW</option>
-            </select>
-          </label>
-          <label class="block">
-            <span class="sr-only">Kraftstoff</span>
-            <select id="f-fuel" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
-              <option value="all">Kraftstoff (alle)</option>
-              <option value="Benzin">Benzin</option>
-              <option value="Diesel">Diesel</option>
-            </select>
-          </label>
-          <label class="block">
-            <span class="sr-only">Sortierung</span>
-            <select id="f-sort" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
-              <option value="price-asc">Preis aufsteigend</option>
-              <option value="price-desc">Preis absteigend</option>
-              <option value="km-asc">Kilometer aufsteigend</option>
-              <option value="year-desc">Neueste zuerst</option>
-            </select>
-          </label>
-          <label class="block md:col-span-2 lg:col-span-5">
-            <span class="flex items-center justify-between text-xs text-neutral-400 mb-1">
-              <span>Max. Preis: <span id="f-price-value" class="text-white font-semibold">alle</span></span>
-              <span><span id="vehicle-count" class="text-white font-semibold">0</span> Fahrzeuge</span>
-            </span>
-            <input id="f-price" type="range" min="0" max="30000" step="500" value="30000" class="w-full accent-brand-500" oninput="document.getElementById('f-price-value').textContent = this.value == 30000 ? 'alle' : new Intl.NumberFormat('de-DE').format(this.value) + ' €'" />
-          </label>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <!-- Mobile Toggle-Zeile (nur bis md sichtbar) -->
+        <div class="flex items-center justify-between gap-3 md:hidden">
+          <button id="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-panel" class="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 px-3 py-2 text-sm font-semibold transition">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            Filter <span id="filter-active-count" class="hidden ml-1 inline-flex items-center justify-center min-w-5 h-5 rounded-full bg-brand-500 text-black text-[10px] font-bold px-1.5">0</span>
+            <svg id="filter-chevron" class="h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <span class="text-sm text-neutral-300"><span id="vehicle-count-mobile" class="text-white font-semibold">0</span> Fahrzeuge</span>
+        </div>
+
+        <!-- Filter-Panel: mobil einklappbar, ab md immer sichtbar -->
+        <div id="filter-panel" class="hidden md:block mt-3 md:mt-0">
+          <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+            <label class="lg:col-span-2 relative block">
+              <span class="sr-only">Suchen</span>
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input id="f-q" type="search" placeholder="Suchen: Marke, Modell, Farbe, Ausstattung …" class="w-full pl-9 rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" />
+            </label>
+            <label class="block">
+              <span class="sr-only">Marke</span>
+              <select id="f-brand" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="all">Alle Marken</option>
+                <option value="BMW">BMW</option>
+                <option value="Ford">Ford</option>
+                <option value="Mazda">Mazda</option>
+                <option value="Opel">Opel</option>
+                <option value="VW">VW</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="sr-only">Kraftstoff</span>
+              <select id="f-fuel" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="all">Kraftstoff (alle)</option>
+                <option value="Benzin">Benzin</option>
+                <option value="Diesel">Diesel</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="sr-only">Sortierung</span>
+              <select id="f-sort" class="w-full rounded-lg bg-ink-800 border border-white/10 px-3 py-2 text-sm text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="price-asc">Preis aufsteigend</option>
+                <option value="price-desc">Preis absteigend</option>
+                <option value="km-asc">Kilometer aufsteigend</option>
+                <option value="year-desc">Neueste zuerst</option>
+              </select>
+            </label>
+            <label class="block md:col-span-2 lg:col-span-5">
+              <span class="flex items-center justify-between text-xs text-neutral-400 mb-1">
+                <span>Max. Preis: <span id="f-price-value" class="text-white font-semibold">alle</span></span>
+                <span class="hidden md:inline"><span id="vehicle-count" class="text-white font-semibold">0</span> Fahrzeuge</span>
+              </span>
+              <input id="f-price" type="range" min="0" max="30000" step="500" value="30000" class="w-full accent-brand-500" oninput="document.getElementById('f-price-value').textContent = this.value == 30000 ? 'alle' : new Intl.NumberFormat('de-DE').format(this.value) + ' €'" />
+            </label>
+          </div>
         </div>
       </div>
     </section>
