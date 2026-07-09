@@ -75,6 +75,19 @@
         <strong>Demo-Modus:</strong> Änderungen bleiben nur in diesem Browser gespeichert. In der Live-Version läuft alles über die IONOS-Datenbank.
       </div>
 
+      <!-- TABS -->
+      <nav class="mb-8 flex gap-1 border-b border-white/10" role="tablist">
+        <button type="button" data-tab="vehicles" role="tab" aria-selected="true"
+          class="tab-btn relative px-4 py-3 text-sm font-semibold text-white after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-0.5 after:bg-brand-500">
+          Fahrzeuge
+        </button>
+        <button type="button" data-tab="appointments" role="tab" aria-selected="false"
+          class="tab-btn relative px-4 py-3 text-sm font-semibold text-neutral-400 hover:text-white after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-0.5 after:bg-transparent">
+          Termine
+          <span id="pending-badge" class="hidden ml-1 inline-flex items-center justify-center min-w-5 h-5 rounded-full bg-brand-500 text-black text-[10px] font-bold px-1.5">0</span>
+        </button>
+      </nav>
+
       <!-- LIST VIEW -->
       <div id="list-view">
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -104,6 +117,55 @@
             </table>
           </div>
         </div>
+      </div>
+
+      <!-- APPOINTMENTS VIEW -->
+      <div id="appointments-view" class="hidden space-y-10">
+
+        <!-- Kalender-Blocker -->
+        <section>
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <h2 class="font-display uppercase text-3xl">Wochen-Kalender</h2>
+              <p class="text-sm text-neutral-400 mt-1">Klicken Sie auf einen Slot, um ihn für Kunden zu sperren oder wieder freizugeben.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" data-week-nav="-1" class="h-10 w-10 inline-flex items-center justify-center rounded-lg border border-white/10 bg-ink-800 hover:bg-white/10 transition" aria-label="Vorherige Woche">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button type="button" data-week-nav="0" class="rounded-lg border border-white/10 bg-ink-800 hover:bg-white/10 h-10 px-4 text-sm font-semibold transition">Heute</button>
+              <button type="button" data-week-nav="+1" class="h-10 w-10 inline-flex items-center justify-center rounded-lg border border-white/10 bg-ink-800 hover:bg-white/10 transition" aria-label="Nächste Woche">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-4 flex flex-wrap items-center gap-4 text-xs text-neutral-400">
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-brand-500/30 border border-brand-500/60"></span> frei &amp; buchbar</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-red-500/40 border border-red-500/60"></span> von mir gesperrt</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-blue-500/40 border border-blue-500/60"></span> bestätigter Termin</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-white/10"></span> vergangen</span>
+          </div>
+
+          <div id="admin-calendar" class="rounded-2xl border border-white/10 bg-ink-800 p-6" aria-live="polite"></div>
+        </section>
+
+        <!-- Anfrage-Inbox -->
+        <section>
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <h2 class="font-display uppercase text-3xl">Anfrage-Inbox</h2>
+              <p class="text-sm text-neutral-400 mt-1">Eingegangene Terminanfragen der Kunden.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" data-inbox-filter="all" class="inbox-filter rounded-md bg-white/10 border border-white/10 px-3 py-1.5 text-xs font-semibold">Alle</button>
+              <button type="button" data-inbox-filter="pending" class="inbox-filter rounded-md bg-white/5 border border-white/10 px-3 py-1.5 text-xs font-semibold text-neutral-400">Ausstehend</button>
+              <button type="button" data-inbox-filter="confirmed" class="inbox-filter rounded-md bg-white/5 border border-white/10 px-3 py-1.5 text-xs font-semibold text-neutral-400">Bestätigt</button>
+            </div>
+          </div>
+          <div id="inbox-list" class="space-y-3"></div>
+        </section>
+
       </div>
 
       <!-- FORM VIEW -->

@@ -44,9 +44,26 @@
     return d.getTime() === t.getTime();
   };
 
+  // Admin-Blocks + bestätigte Termine aus localStorage (Demo)
+  const getAdminBlocks = () => {
+    try { return JSON.parse(localStorage.getItem('koberstein_slot_blocks') || '[]'); }
+    catch { return []; }
+  };
+  const getConfirmedAppts = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem('koberstein_appointments') || '[]');
+      return list.filter(a => a.status === 'confirmed');
+    } catch { return []; }
+  };
+
   const isSlotBooked = (d, slot) => {
-    // Deterministisch: ~40 % belegt
-    return hash(`${isoDate(d)}_${slot}_${state.service}`) % 10 < 4;
+    const dateStr = isoDate(d);
+    // 1. Von Bernd manuell gesperrt
+    if (getAdminBlocks().some(b => b.date === dateStr && b.time === slot)) return true;
+    // 2. Bestätigter Kundentermin
+    if (getConfirmedAppts().some(a => a.date === dateStr && a.time === slot)) return true;
+    // 3. Fallback: deterministische Zufallsbelegung (~30 %) für Wochen ohne echte Daten
+    return hash(`${dateStr}_${slot}_${state.service}`) % 10 < 3;
   };
 
   const render = () => {
