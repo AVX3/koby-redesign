@@ -317,10 +317,25 @@ window.VEHICLES = [
   const filterChevron = document.getElementById('filter-chevron');
   if (filterToggle && filterPanel) {
     filterToggle.addEventListener('click', () => {
-      const open = filterPanel.classList.toggle('hidden') === false;
-      filterToggle.setAttribute('aria-expanded', String(open));
-      if (filterChevron) filterChevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+      const isOpen = filterPanel.dataset.open === 'true';
+      const next = !isOpen;
+      filterPanel.dataset.open = String(next);
+      // Inline-Style überschreiben (md:!block gilt ab md automatisch)
+      filterPanel.style.display = next ? 'block' : 'none';
+      filterToggle.setAttribute('aria-expanded', String(next));
+      if (filterChevron) filterChevron.style.transform = next ? 'rotate(180deg)' : 'rotate(0deg)';
     });
+    // Bei Resize auf >= md die Inline-display zurücksetzen, damit Tailwind wieder greift
+    const mq = window.matchMedia('(min-width: 768px)');
+    const syncMedia = () => {
+      if (mq.matches) {
+        filterPanel.style.display = '';
+      } else if (filterPanel.dataset.open !== 'true') {
+        filterPanel.style.display = 'none';
+      }
+    };
+    mq.addEventListener('change', syncMedia);
+    syncMedia();
   }
 
   // Filter-Bindings
