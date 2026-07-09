@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fd4500" />
+
+  <title>Über mich · Koberstein Automobile – Autohandel, Restauration, Motorsport &amp; Oldtimer</title>
+  <meta name="description" content="Über Bernd Koberstein: Autohandel, Restauration klassischer Fahrzeuge, Motorsport-Karriere und private Oldtimer-Sammlung – aus Leidenschaft zum Automobil." />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Über mich · Koberstein Automobile" />
+  <meta property="og:description" content="Autohandel, Restauration, Motorsport &amp; Oldtimer – aus Leidenschaft." />
+  <meta property="og:image" content="assets/images/logo.gif" />
+
+  <link rel="icon" href="assets/images/logo.gif" type="image/gif" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+
+<body class="bg-ink-900 text-neutral-100 font-sans antialiased selection:bg-brand-500 selection:text-black">
+
+  <a href="#main" class="skip-link sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 bg-brand-500 text-black font-semibold px-4 py-2 rounded">Zum Inhalt springen</a>
+
+  <header class="sticky top-0 z-40 bg-ink-900/85 backdrop-blur border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Zur Startseite">
+          <img src="assets/images/logo.gif" width="140" height="48" alt="Koberstein Automobile" class="h-12 w-auto" />
+        </a>
+        <nav class="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
+          <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-200 hover:text-white hover:bg-white/5 transition">Home</a>
+          <a href="fahrzeug-angebote.html" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-200 hover:text-white hover:bg-white/5 transition">Fahrzeuge</a>
+          <a href="werkstatt.html" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-200 hover:text-white hover:bg-white/5 transition">Werkstatt</a>
+          <a href="leidenschaft.html" aria-current="page" class="px-3 py-2 rounded-md text-sm font-semibold text-brand-500 bg-white/5">Über mich</a>
+          <a href="kontakt.html" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-200 hover:text-white hover:bg-white/5 transition">Kontakt</a>
+          <a href="tel:+491776849400" class="ml-3 inline-flex items-center gap-2 rounded-md bg-brand-500 text-black px-4 py-2 text-sm font-bold hover:bg-brand-400 transition">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            0177 6849400
+          </a>
+        </nav>
+        <button id="menu-toggle" type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neutral-200 hover:bg-white/5" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Menü öffnen</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-ink-900" aria-label="Mobile Navigation">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-200 hover:bg-white/5">Home</a>
+        <a href="fahrzeug-angebote.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-200 hover:bg-white/5">Fahrzeuge</a>
+        <a href="werkstatt.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-200 hover:bg-white/5">Werkstatt</a>
+        <a href="leidenschaft.html" aria-current="page" class="block px-3 py-2 rounded-md text-base font-semibold text-brand-500 bg-white/5">Über mich</a>
+        <a href="kontakt.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-200 hover:bg-white/5">Kontakt</a>
+        <a href="tel:+491776849400" class="block mt-2 text-center rounded-md bg-brand-500 text-black px-4 py-2 font-bold">0177 6849400 anrufen</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="hero-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <nav class="text-sm text-neutral-400 mb-6" aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2">
+              <li><a href="index.html" class="hover:text-white">Start</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" class="text-neutral-200">Über mich</li>
+            </ol>
+          </nav>
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Bernd Koberstein</p>
+          <h1 class="mt-3 font-display uppercase tracking-tight text-4xl sm:text-6xl lg:text-7xl leading-none">
+            Aus <span class="text-brand-500">Leidenschaft</span><br />
+            zum Automobil.
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg text-neutral-300">
+            Beruflich Autohändler, privat Schrauber, Sammler und Motorsportler. Auf dieser Seite
+            gibt es einen Blick hinter die Kulissen – meine Restaurationen, meine Motorsport-Jahre
+            und die Oldtimer, die mir am Herzen liegen.
+          </p>
+
+          <nav class="mt-8 flex flex-wrap gap-2" aria-label="Abschnitte">
+            <a href="#autohandel" class="rounded-full bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-1.5 text-sm">Autohandel</a>
+            <a href="#restauration" class="rounded-full bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-1.5 text-sm">Restauration</a>
+            <a href="#motorsport" class="rounded-full bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-1.5 text-sm">Motorsport</a>
+            <a href="#oldtimer" class="rounded-full bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-1.5 text-sm">Oldtimer</a>
+          </nav>
+        </div>
+        <div class="relative">
+          <div class="rounded-2xl overflow-hidden border border-white/10 bg-ink-800 shadow-2xl">
+            <img src="assets/images/content/autohandel.jpg" alt="Bernd Kobersteins Leidenschaft zum Automobil" class="w-full h-auto block" />
+          </div>
+          <div class="absolute -bottom-4 -right-4 hidden sm:block rounded-xl bg-brand-500 text-black px-4 py-3 shadow-xl">
+            <p class="font-display uppercase text-sm leading-none">Seit</p>
+            <p class="font-display text-2xl leading-none">30+ Jahren</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOHANDEL -->
+    <section id="autohandel" class="py-16 sm:py-24 bg-ink-900 scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-3">
+        <div class="lg:col-span-1">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Kapitel 01</p>
+          <h2 class="mt-2 font-display uppercase text-3xl sm:text-4xl">Autohandel</h2>
+          <p class="mt-4 text-neutral-300 leading-relaxed">
+            Da ich mich nicht nur beruflich mit Fahrzeugen beschäftige, sondern auch privat
+            schon lange sehr viel mit ihnen zu tun habe, verkaufe ich Gebrauchtwagen von
+            ausgewählten Premium-Herstellern – geprüft, ehrlich und persönlich betreut.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="fahrzeug-angebote.html" class="inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-black px-5 py-2.5 font-bold transition">
+              Aktuelle Angebote
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-2 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-white/10 bg-ink-800 p-5">
+            <h3 class="font-semibold text-white">Fahrzeug-Angebote</h3>
+            <p class="mt-2 text-sm text-neutral-400">Aktuelle Gebrauchtwagen im Bestand.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-ink-800 p-5">
+            <h3 class="font-semibold text-white">Fahrzeug-Ankauf</h3>
+            <p class="mt-2 text-sm text-neutral-400">Faires Angebot für Ihr Fahrzeug.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-ink-800 p-5">
+            <h3 class="font-semibold text-white">Fahrzeug-Galerie</h3>
+            <p class="mt-2 text-sm text-neutral-400">Bilder aus vielen Jahren Autohandel.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-ink-800 p-5">
+            <h3 class="font-semibold text-white">Tipps &amp; Empfehlungen</h3>
+            <p class="mt-2 text-sm text-neutral-400">Rund um den Autokauf.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESTAURATION -->
+    <section id="restauration" class="py-16 sm:py-24 bg-ink-800/50 scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-ink-800 shadow-2xl">
+          <img src="assets/images/content/restauration_nachher.jpg" alt="Restaurierter Motor" class="w-full h-auto block" loading="lazy" />
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Kapitel 02</p>
+          <h2 class="mt-2 font-display uppercase text-3xl sm:text-4xl">Restauration</h2>
+          <p class="mt-4 text-neutral-300 leading-relaxed">
+            Nach <a href="https://de.wikipedia.org/wiki/Eug%C3%A8ne_Viollet-le-Duc" target="_blank" rel="noopener" class="text-brand-500 hover:underline">Eugène Viollet-le-Duc</a>
+            ist Restauration die Herstellung eines ursprünglich gedachten, vollkommenen Zustands.
+            In der Praxis: viel Arbeit, die genau geplant werden muss – und viel Zeit in Anspruch nimmt.
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">1968</p>
+              <p class="text-sm text-white">Mercedes 300 SEL</p>
+            </div>
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">1969</p>
+              <p class="text-sm text-white">VW Käfer Motor</p>
+            </div>
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">1973</p>
+              <p class="text-sm text-white">BMW 2002 tii Alpina</p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="restauration.html" class="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 px-5 py-2.5 font-semibold transition">
+              Mehr zur Restauration
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTORSPORT -->
+    <section id="motorsport" class="py-16 sm:py-24 bg-ink-900 scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Kapitel 03</p>
+          <h2 class="mt-2 font-display uppercase text-3xl sm:text-4xl">Motorsport</h2>
+          <p class="mt-4 text-neutral-300 leading-relaxed">
+            Vom Slalom-Juniorenclubmeister 1991 über den Lotus Super 7 auf Hockenheim, Anneau du Rhin
+            und Nürburgring – bis zum Jägermeistergolf auf der Nordschleife. Streckenkenntnis und
+            Ehrgeiz brachten immer bessere Rundenzeiten.
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">Klassiker</p>
+              <p class="text-sm text-white">Lotus Super 7</p>
+            </div>
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">Turbo</p>
+              <p class="text-sm text-white">Ford Escort RS</p>
+            </div>
+            <div class="rounded-lg bg-ink-800 border border-white/10 px-3 py-2">
+              <p class="text-[10px] uppercase tracking-widest text-neutral-500">Nordschleife</p>
+              <p class="text-sm text-white">Jägermeistergolf</p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="motorsport.html" class="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 px-5 py-2.5 font-semibold transition">
+              Ganze Geschichte lesen
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-ink-800 shadow-2xl">
+          <img src="assets/images/content/lotus_super_7.jpg" alt="Mein Lotus Super 7" class="w-full h-auto block" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- OLDTIMER -->
+    <section id="oldtimer" class="py-16 sm:py-24 bg-ink-800/50 scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Kapitel 04</p>
+            <h2 class="mt-2 font-display uppercase text-3xl sm:text-4xl">Oldtimer &amp; Klassiker</h2>
+            <p class="mt-4 text-neutral-300 leading-relaxed">
+              Eine kleine, feine Sammlung – vom Mercedes 300 SEL über den BMW 2002 tii Alpina
+              bis zum Jägermeister-Golf. Fahrzeuge, die Geschichte geschrieben haben und
+              heute Geschichten erzählen.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="oldtimer.html" class="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 px-5 py-2.5 font-semibold transition">
+                Zur Oldtimer-Sammlung
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="grid gap-3">
+            <div class="rounded-xl border border-white/10 bg-ink-800 p-4 flex items-baseline gap-4">
+              <span class="font-display text-3xl text-brand-500">1968</span>
+              <span class="text-sm text-neutral-200">Mercedes Benz 300 SEL</span>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-ink-800 p-4 flex items-baseline gap-4">
+              <span class="font-display text-3xl text-brand-500">1969</span>
+              <span class="text-sm text-neutral-200">VW Käfer 1300</span>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-ink-800 p-4 flex items-baseline gap-4">
+              <span class="font-display text-3xl text-brand-500">1973</span>
+              <span class="text-sm text-neutral-200">BMW 2002 tii Alpina</span>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-ink-800 p-4 flex items-baseline gap-4">
+              <span class="font-display text-3xl text-brand-500">1976</span>
+              <span class="text-sm text-neutral-200">VW Golf L</span>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-ink-800 p-4 flex items-baseline gap-4">
+              <span class="font-display text-3xl text-brand-500">1981</span>
+              <span class="text-sm text-neutral-200">VW Golf GTI (Jägermeister)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 sm:py-24 bg-ink-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-500/10 via-ink-900 to-ink-900 p-8 sm:p-12">
+          <div class="max-w-2xl">
+            <h2 class="font-display uppercase text-3xl sm:text-4xl">Sprechen Sie mich an.</h2>
+            <p class="mt-4 text-neutral-300">
+              Ob Fahrzeugkauf, Restauration oder einfach ein Klassiker-Talk – ich freue mich
+              auf Ihre Nachricht.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="kontakt.html" class="inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-black px-6 py-3 font-bold transition">
+                Kontakt aufnehmen
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="tel:+491776849400" class="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 px-6 py-3 font-semibold transition">0177 6849400</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 bg-ink-900" aria-labelledby="footer-titel">
+    <h2 id="footer-titel" class="sr-only">Fußbereich</h2>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
+      <div>
+        <img src="assets/images/logo.gif" width="140" height="48" alt="Koberstein Automobile" class="h-12 w-auto" />
+        <p class="mt-4 text-sm text-neutral-400 max-w-sm">Autohandel · Werkstatt · Restauration. Persönlich, ehrlich und mit Leidenschaft für Automobile aus Schorndorf-Haubersbronn.</p>
+      </div>
+      <nav aria-label="Rechtliches">
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Rechtliches</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="impressum.html" class="text-neutral-400 hover:text-white">Impressum</a></li>
+          <li><a href="impressum.html#datenschutz" class="text-neutral-400 hover:text-white">Datenschutzerklärung</a></li>
+          <li><a href="kontakt.html" class="text-neutral-400 hover:text-white">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Direkter Draht</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="tel:+491776849400" class="text-neutral-300 hover:text-white">Mobil: 0177 6849400</a></li>
+          <li><a href="tel:+4971816849" class="text-neutral-300 hover:text-white">Fon: 07181 68494</a></li>
+          <li><a href="mailto:info@autohaus-koberstein.de" class="text-neutral-300 hover:text-white break-all">info@autohaus-koberstein.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="text-xs text-neutral-500">© <span id="year"></span> Koberstein Automobile · Alle Rechte vorbehalten.</p>
+        <p class="text-xs text-neutral-500">Lokale Vorschau · nicht die Live-Version</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

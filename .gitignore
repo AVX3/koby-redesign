@@ -1,0 +1,21 @@
+# Original-Referenzdateien (lokal zur Verifizierung, gehören nicht ins Deployment)
+_original/
+_*.html
+_*.css
+_*.gif
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node / Build (falls später Build-Tools hinzukommen)
+node_modules/
+dist/
+.env
+.env.local

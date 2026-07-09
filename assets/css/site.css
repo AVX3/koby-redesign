@@ -1,0 +1,24 @@
+:focus-visible {
+  outline: 2px solid #fd4500;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.hero-bg {
+  background:
+    radial-gradient(1200px 400px at 90% -10%, rgba(253,69,0,0.25), transparent 60%),
+    radial-gradient(800px 300px at 0% 110%, rgba(253,69,0,0.15), transparent 60%),
+    #0a0a0a;
+}
+.tile-bg {
+  background:
+    radial-gradient(600px 260px at 100% 0%, rgba(253,69,0,0.35), transparent 60%),
+    linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+}
+.prose-invert p { color: #d4d4d4; margin-top: 0.75rem; margin-bottom: 0.75rem; line-height: 1.75; }
+.prose-invert h2 { color: #fff; font-family: 'Barlow Condensed', Impact, sans-serif; text-transform: uppercase; font-size: 1.75rem; margin-top: 2rem; }
+.prose-invert h3 { color: #fff; font-weight: 600; font-size: 1.125rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose-invert a { color: #fd4500; text-decoration: underline; text-underline-offset: 3px; }
+.prose-invert a:hover { color: #ff6428; }
