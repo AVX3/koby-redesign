@@ -145,10 +145,20 @@
             </div>
             <div>
               <label for="v-brand" class="block text-sm font-medium text-neutral-200 mb-1.5">Marke <span class="text-brand-500">*</span></label>
-              <select id="v-brand" required class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
-                <option value="">Bitte wählen</option>
-                <option>BMW</option><option>Ford</option><option>Mazda</option><option>Opel</option><option>VW</option><option>Audi</option><option>Mercedes</option><option>Porsche</option><option>Sonstige</option>
-              </select>
+              <input id="v-brand" list="brand-suggestions" required autocomplete="off" type="text"
+                class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none"
+                placeholder="z. B. BMW – oder eigene Marke tippen" />
+              <datalist id="brand-suggestions">
+                <option value="Audi"></option>
+                <option value="BMW"></option>
+                <option value="Ford"></option>
+                <option value="Mazda"></option>
+                <option value="Mercedes"></option>
+                <option value="Opel"></option>
+                <option value="Porsche"></option>
+                <option value="VW"></option>
+              </datalist>
+              <p class="mt-1 text-xs text-neutral-500">Aus Liste wählen oder frei eingeben.</p>
             </div>
             <div>
               <label for="v-category" class="block text-sm font-medium text-neutral-200 mb-1.5">Kategorie</label>
