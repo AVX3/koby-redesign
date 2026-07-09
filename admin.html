@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fd4500" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <title>Admin · Koberstein Automobile</title>
+
+  <link rel="icon" href="assets/images/logo.gif" type="image/gif" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+
+<body class="bg-ink-900 text-neutral-100 font-sans antialiased">
+
+  <!-- LOGIN -->
+  <section id="login-view" class="min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <img src="assets/images/logo.gif" alt="Koberstein Automobile" class="h-14 w-auto mx-auto" />
+        <p class="mt-4 text-sm font-semibold uppercase tracking-widest text-brand-500">Fahrzeug-Verwaltung</p>
+        <h1 class="mt-2 font-display uppercase text-3xl">Anmeldung</h1>
+      </div>
+
+      <form id="login-form" class="rounded-2xl border border-white/10 bg-ink-800 p-6 space-y-4" novalidate>
+        <div>
+          <label for="login-password" class="block text-sm font-medium text-neutral-200 mb-1.5">Passwort</label>
+          <input id="login-password" name="password" type="password" required autocomplete="current-password"
+            class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white placeholder-neutral-500 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" />
+          <p id="login-error" class="hidden mt-2 text-xs text-brand-400" role="alert">Passwort ist falsch.</p>
+        </div>
+        <button type="submit" class="w-full rounded-lg bg-brand-500 hover:bg-brand-400 text-black px-4 py-2.5 font-bold transition">
+          Anmelden
+        </button>
+        <p class="text-xs text-center text-neutral-500 pt-2 border-t border-white/5">
+          Demo-Passwort: <code class="text-brand-400 font-mono">demo</code>
+        </p>
+      </form>
+
+      <p class="text-center text-xs text-neutral-500 mt-6">
+        <a href="index.html" class="hover:text-white">← Zurück zur öffentlichen Seite</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="admin-view" class="hidden">
+    <header class="sticky top-0 z-30 bg-ink-900/90 backdrop-blur border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/logo.gif" alt="Koberstein Automobile" class="h-9 w-auto" />
+          <span class="hidden sm:inline font-display uppercase text-lg">Admin</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="fahrzeug-angebote.html" target="_blank" class="hidden sm:inline-flex items-center gap-1 rounded-md bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 text-sm">
+            Öffentliche Ansicht
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          </a>
+          <button id="logout-btn" type="button" class="rounded-md bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 text-sm">Abmelden</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+      <div class="mb-6 rounded-lg border border-yellow-500/30 bg-yellow-500/10 text-yellow-200 px-4 py-3 text-sm" role="status">
+        <strong>Demo-Modus:</strong> Änderungen bleiben nur in diesem Browser gespeichert. In der Live-Version läuft alles über die IONOS-Datenbank.
+      </div>
+
+      <!-- LIST VIEW -->
+      <div id="list-view">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <h2 class="font-display uppercase text-3xl">Fahrzeuge</h2>
+            <p class="text-sm text-neutral-400 mt-1"><span id="vehicle-total">0</span> Fahrzeuge im Bestand</p>
+          </div>
+          <button id="new-vehicle-btn" type="button" class="inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-black px-4 py-2 font-bold transition">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Neues Fahrzeug
+          </button>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-ink-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-ink-900/80 text-neutral-400 text-xs uppercase tracking-widest">
+                <tr>
+                  <th class="text-left px-4 py-3">Bild</th>
+                  <th class="text-left px-4 py-3">Fahrzeug</th>
+                  <th class="text-left px-4 py-3 hidden md:table-cell">EZ / km</th>
+                  <th class="text-right px-4 py-3">Preis</th>
+                  <th class="text-right px-4 py-3">Aktion</th>
+                </tr>
+              </thead>
+              <tbody id="vehicle-tbody" class="divide-y divide-white/5"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM VIEW -->
+      <div id="form-view" class="hidden">
+        <div class="flex items-center gap-3 mb-6">
+          <button id="back-to-list" type="button" class="rounded-md bg-white/5 hover:bg-white/10 border border-white/10 h-9 w-9 inline-flex items-center justify-center" aria-label="Zurück">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <h2 id="form-title" class="font-display uppercase text-3xl">Neues Fahrzeug</h2>
+        </div>
+
+        <form id="vehicle-form" class="rounded-2xl border border-white/10 bg-ink-800 p-6 sm:p-8 space-y-6" novalidate>
+          <input type="hidden" id="v-id" />
+
+          <!-- Bild -->
+          <div>
+            <label for="v-image" class="block text-sm font-medium text-neutral-200 mb-2">Fahrzeugbild</label>
+            <div class="flex items-start gap-4">
+              <div id="v-image-preview" class="h-32 w-48 rounded-lg border border-white/10 bg-ink-900 flex items-center justify-center text-neutral-600 text-xs overflow-hidden shrink-0">
+                Kein Bild
+              </div>
+              <div class="flex-1">
+                <input id="v-image" type="file" accept="image/*" class="block w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-brand-500 file:text-black hover:file:bg-brand-400 file:cursor-pointer" />
+                <p class="mt-2 text-xs text-neutral-500">JPG oder PNG · empfohlen 1600 × 1000 px · max. 5 MB</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grunddaten -->
+          <fieldset class="grid gap-4 sm:grid-cols-2 pt-2">
+            <legend class="text-xs uppercase tracking-widest text-brand-500 font-semibold mb-3">Grunddaten</legend>
+            <div>
+              <label for="v-title" class="block text-sm font-medium text-neutral-200 mb-1.5">Titel <span class="text-brand-500">*</span></label>
+              <input id="v-title" required type="text" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="z. B. BMW Z3 Coupe 2.8" />
+            </div>
+            <div>
+              <label for="v-subtitle" class="block text-sm font-medium text-neutral-200 mb-1.5">Untertitel</label>
+              <input id="v-subtitle" type="text" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="Kurzbeschreibung / Ausstattung" />
+            </div>
+            <div>
+              <label for="v-brand" class="block text-sm font-medium text-neutral-200 mb-1.5">Marke <span class="text-brand-500">*</span></label>
+              <select id="v-brand" required class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="">Bitte wählen</option>
+                <option>BMW</option><option>Ford</option><option>Mazda</option><option>Opel</option><option>VW</option><option>Audi</option><option>Mercedes</option><option>Porsche</option><option>Sonstige</option>
+              </select>
+            </div>
+            <div>
+              <label for="v-category" class="block text-sm font-medium text-neutral-200 mb-1.5">Kategorie</label>
+              <select id="v-category" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option>Limousine</option><option>Coupé</option><option>Cabrio</option><option>Kombi</option><option>Van</option><option>Van/Camper</option><option>Kompakt</option><option>SUV</option><option>Oldtimer</option>
+              </select>
+            </div>
+            <div>
+              <label for="v-price" class="block text-sm font-medium text-neutral-200 mb-1.5">Preis in € <span class="text-brand-500">*</span></label>
+              <input id="v-price" required type="number" min="0" step="100" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="9900" />
+            </div>
+            <div>
+              <label for="v-ez" class="block text-sm font-medium text-neutral-200 mb-1.5">Erstzulassung (MM/JJJJ)</label>
+              <input id="v-ez" type="text" pattern="\d{2}/\d{4}" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="11/1998" />
+            </div>
+          </fieldset>
+
+          <!-- Technik -->
+          <fieldset class="grid gap-4 sm:grid-cols-3 pt-2">
+            <legend class="text-xs uppercase tracking-widest text-brand-500 font-semibold mb-3">Technik</legend>
+            <div>
+              <label for="v-km" class="block text-sm font-medium text-neutral-200 mb-1.5">Kilometerstand</label>
+              <input id="v-km" type="number" min="0" step="100" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="136000" />
+            </div>
+            <div>
+              <label for="v-kw" class="block text-sm font-medium text-neutral-200 mb-1.5">Leistung (kW)</label>
+              <input id="v-kw" type="number" min="0" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="142" />
+            </div>
+            <div>
+              <label for="v-ps" class="block text-sm font-medium text-neutral-200 mb-1.5">Leistung (PS)</label>
+              <input id="v-ps" type="number" min="0" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="193" />
+            </div>
+            <div>
+              <label for="v-fuel" class="block text-sm font-medium text-neutral-200 mb-1.5">Kraftstoff</label>
+              <select id="v-fuel" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option>Benzin</option><option>Diesel</option><option>Hybrid</option><option>Elektro</option><option>LPG</option>
+              </select>
+            </div>
+            <div>
+              <label for="v-transmission" class="block text-sm font-medium text-neutral-200 mb-1.5">Getriebe</label>
+              <select id="v-transmission" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option>Schaltgetriebe</option><option>Automatik</option><option>Halbautomatik</option>
+              </select>
+            </div>
+            <div>
+              <label for="v-euro" class="block text-sm font-medium text-neutral-200 mb-1.5">Schadstoffklasse</label>
+              <select id="v-euro" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="">–</option>
+                <option value="2">Euro 2</option><option value="3">Euro 3</option><option value="4">Euro 4</option><option value="5">Euro 5</option><option value="6">Euro 6</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Sonstiges -->
+          <fieldset class="grid gap-4 sm:grid-cols-3 pt-2">
+            <legend class="text-xs uppercase tracking-widest text-brand-500 font-semibold mb-3">Zusatzangaben</legend>
+            <div>
+              <label for="v-color" class="block text-sm font-medium text-neutral-200 mb-1.5">Farbe</label>
+              <input id="v-color" type="text" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="Cosmosschwarz-metallic" />
+            </div>
+            <div>
+              <label for="v-hu" class="block text-sm font-medium text-neutral-200 mb-1.5">HU (MM/JJJJ)</label>
+              <input id="v-hu" type="text" pattern="\d{2}/\d{4}" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="02/2027" />
+            </div>
+            <div>
+              <label for="v-klima" class="block text-sm font-medium text-neutral-200 mb-1.5">Klima</label>
+              <select id="v-klima" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none">
+                <option value="">–</option>
+                <option>Klimaanlage</option><option>Klimaautomatik</option>
+              </select>
+            </div>
+            <div class="sm:col-span-3">
+              <label for="v-highlights" class="block text-sm font-medium text-neutral-200 mb-1.5">Highlights (Komma-getrennt)</label>
+              <input id="v-highlights" type="text" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none" placeholder="Leder, 18 Zoll, Sitzheizung, Navi" />
+              <p class="mt-1 text-xs text-neutral-500">Bis zu 4 werden auf der Karte angezeigt.</p>
+            </div>
+            <div class="sm:col-span-3">
+              <label for="v-description" class="block text-sm font-medium text-neutral-200 mb-1.5">Beschreibung</label>
+              <textarea id="v-description" rows="4" class="w-full rounded-lg bg-ink-900 border border-white/10 px-3.5 py-2.5 text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/40 focus:outline-none resize-y" placeholder="Detailtext für die Fahrzeug-Detailansicht …"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
+            <button id="delete-btn" type="button" class="hidden inline-flex items-center gap-2 rounded-lg bg-red-500/15 hover:bg-red-500/25 border border-red-500/40 text-red-300 px-4 py-2 text-sm font-semibold transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6h14zM10 11v6M14 11v6"/></svg>
+              Löschen
+            </button>
+            <div class="flex flex-wrap items-center gap-3 ml-auto">
+              <button type="button" id="cancel-btn" class="rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 text-sm font-semibold transition">
+                Abbrechen
+              </button>
+              <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-black px-5 py-2 font-bold transition">
+                Speichern
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="assets/js/admin.js" defer></script>
+</body>
+</html>

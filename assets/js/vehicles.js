@@ -203,6 +203,18 @@ window.VEHICLES = [
 
 (() => {
   'use strict';
+
+  // Eigene, im Admin angelegte Fahrzeuge einlesen (Demo: localStorage)
+  try {
+    const custom = JSON.parse(localStorage.getItem('koberstein_vehicles_custom') || '[]');
+    const imgMap = JSON.parse(localStorage.getItem('koberstein_vehicles_images') || '{}');
+    if (custom.length) {
+      // eigene Bilder als Blob-URL im Vehicle-Objekt hinterlegen
+      const withImages = custom.map(v => ({ ...v, __customImg: imgMap[v.id] || null }));
+      window.VEHICLES = [...withImages, ...window.VEHICLES];
+    }
+  } catch (e) { /* ignore */ }
+
   const grid = document.getElementById('vehicle-grid');
   if (!grid) return;
 
@@ -224,7 +236,7 @@ window.VEHICLES = [
     return map[b] || 'from-brand-500/30';
   };
 
-  const imgFor = (v) => `assets/images/vehicles/${v.id}_1.jpg`;
+  const imgFor = (v) => v.__customImg || `assets/images/vehicles/${v.id}_1.jpg`;
 
   const chip = (label) =>
     `<span class="inline-flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-2.5 py-0.5 text-xs text-neutral-300">${label}</span>`;
